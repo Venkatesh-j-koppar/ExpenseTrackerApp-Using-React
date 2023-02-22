@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { db } = require("./db/db");
 const app = express();
-const {}
+const { readdirSync } = require("fs");
 
 require("dotenv").config();
 
@@ -13,7 +13,9 @@ app.use(express.json());
 app.use(cors());
 
 //routes
-
+readdirSync("./routes").map((routes) => {
+  return app.use("/api/v1", require("./routes/" + routes));
+});
 
 app.get("/", (req, res) => {
   res.send("Hello world");
