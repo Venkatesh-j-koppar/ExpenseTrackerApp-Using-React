@@ -8,7 +8,7 @@ const BASE_URL = "http://localhost:5000/api/v1/";
 export const GlobalProvider = ({ children }) => {
   const [incomes, setIncomes] = useState([]);
   const [expense, setExpense] = useState([]);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState(null);
 
   const addIncome = async (income) => {
     const response = await axios
