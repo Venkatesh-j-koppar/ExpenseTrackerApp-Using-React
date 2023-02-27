@@ -50,13 +50,13 @@ function Form() {
       <div className="input-control">
         <DatePicker
           id="date"
-          placeholder="Enter a Date"
+          placeholderText="Enter a Date"
           selected={date}
           dateFormat="dd/MM/yyyy"
           onChange={(date) => {
             setInputState({ ...inputState, date: date });
           }}
-        ></DatePicker>
+        />
       </div>
 
       <div className="selects input-control">
@@ -80,6 +80,17 @@ function Form() {
           <option value="other">Other</option>
         </select>
       </div>
+      <div className="input-control">
+        <textarea
+          name="description"
+          id="description"
+          placeholder="Enter Description"
+          value={description}
+          onChange={handleInput("description")}
+          cols="30"
+          rows="10"
+        ></textarea>
+      </div>
       <div className="submit-btn">
         <button>Add Income</button>
       </div>
@@ -87,6 +98,54 @@ function Form() {
   );
 }
 
-const FormStyled = styled.form``;
+const FormStyled = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    background: transparent;
+    resize: none;
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+    color: rgba(34, 34, 96, 0.9);
+    &::placeholder {
+      color: rgba(34, 34, 96, 0.4);
+    }
+  }
+  .input-control {
+    input {
+      width: 100%;
+    }
+  }
+
+  .selects {
+    display: flex;
+    justify-content: flex-end;
+    select {
+      color: rgba(34, 34, 96, 1);
+      &:focus,
+      &:active {
+        color: rgba(34, 34, 96, 1);
+      }
+    }
+  }
+
+  .submit-btn {
+    button {
+      box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+      &:hover {
+        background: var(--color-green) !important;
+      }
+    }
+  }
+`;
 
 export default Form;
