@@ -36,9 +36,9 @@ export default function App() {
   return (
     <AppStyled className="App" bg={bg}>
       {orbMemo}
+
       <MainLayout>
         <Navigation active={active} setActive={setActive}></Navigation>
-        <main>{displayData()}</main>
       </MainLayout>
     </AppStyled>
   );
