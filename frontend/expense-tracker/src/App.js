@@ -13,7 +13,6 @@ export default function App() {
   const [active, setActive] = useState(1);
 
   const glob = useGlobalContext();
-  console.log(glob);
 
   const orbMemo = useMemo(() => {
     return <Orb></Orb>;

@@ -6,11 +6,11 @@ import Form from "../Form/Form";
 import IncomeItem from "../IncomeItem/IncomeItem";
 
 export default function Income() {
-  const { addIncome, getIncomes, incomes } = useGlobalContext();
+  const { addIncome, getIncomes, incomes, deleteIncome } = useGlobalContext();
 
   useEffect(() => {
     getIncomes();
-  }, []);
+  }, [incomes]);
 
   return (
     <IncomeStyled>
@@ -20,7 +20,7 @@ export default function Income() {
           <div className="form-container">
             <Form></Form>
           </div>
-          <div className="incomes-hello">
+          <div className="incomes">
             {incomes.map((income) => {
               const { _id, title, amount, date, category, description } =
                 income;
@@ -33,6 +33,7 @@ export default function Income() {
                   amount={amount}
                   category={category}
                   indicatorColor="var(--color-green)"
+                  deleteItem={deleteIncome}
                 ></IncomeItem>
               );
             })}
@@ -43,4 +44,14 @@ export default function Income() {
   );
 }
 
-const IncomeStyled = styled.div``;
+const IncomeStyled = styled.div`
+  display: flex;
+  overflow: auto;
+  .income-content {
+    display: flex;
+    gap: 2rem;
+    .incomes {
+      flex: 1;
+    }
+  }
+`;
