@@ -89,7 +89,9 @@ export default function IncomeItem({
         <h5>{title}</h5>
         <div className="inner-Content">
           <div className="text">
-            <p>{dollar} 45</p>
+            <p>
+              {dollar} {amount}
+            </p>
             <p>
               {calender} {date}
             </p>
